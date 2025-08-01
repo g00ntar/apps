@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-app-with-external-values
+spec:
+  sources:
+    - repoURL: https://charts.bitnami.com/bitnami
+      chart: nginx
+      targetRevision: 21.1.1
+      helm:
+        valueFiles:
+          - "$values/helm-dependency/values.yaml"
+    - repoURL: https://github.com/g00ntar/app1.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: staging
