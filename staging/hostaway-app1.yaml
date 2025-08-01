@@ -9,9 +9,9 @@ spec:
       targetRevision: 21.1.1
       helm:
         valueFiles:
-          - "$values/helm-dependency/values.yaml"
+          - "$values/values.yaml"
     - repoURL: https://github.com/g00ntar/app1.git
-      targetRevision: main
+      targetRevision: master
       ref: values
   destination:
     server: https://kubernetes.default.svc
