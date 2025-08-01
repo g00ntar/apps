@@ -11,7 +11,7 @@ spec:
       helm:
         valueFiles:
           - "$values/values.yaml"
-    - repoURL: https://github.com/g00ntar/hostaway-app1.git
+    - repoURL: git@github.com:g00ntar/hostaway-app1.git
       targetRevision: master
       ref: values
   destination:
