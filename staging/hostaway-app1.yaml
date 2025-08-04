@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hostaway-app1
+spec:
+  project: staging
+  destination:
+    name: in-cluster
+    namespace: staging
+  sources:
+    - repoURL: https://charts.bitnami.com/bitnami
+      chart: nginx
+      targetRevision: 21.1.1
+      helm:
+        valueFiles:
+          - $values/values.yaml
+    - repoURL: https://github.com/g00ntar/hostaway-app1.git
+      targetRevision: staging
+      ref: values
+  syncPolicy:
+    automated: {}
